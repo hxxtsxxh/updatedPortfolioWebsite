@@ -1,0 +1,176 @@
+#infinite-grid-menu-canvas {
+  cursor: grab;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+  outline: none;
+}
+
+#infinite-grid-menu-canvas:active {
+  cursor: grabbing;
+}
+
+.action-button {
+  position: absolute;
+  left: 50%;
+  z-index: 10;
+  width: 60px;
+  height: 60px;
+  display: grid;
+  place-items: center;
+  background: #6366f1; /* Primary color */
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  border: 4px solid white;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+/* Dark mode adjustment support via CSS var or specific class if needed, 
+   but defaulting to white border is usually safe for contrast against primary. */
+
+.face-title {
+  user-select: none;
+  position: absolute;
+  font-weight: 900;
+  font-size: 3rem;
+  left: 1.6em;
+  top: 50%;
+  color: inherit; /* Inherit from parent (handles dark/light mode text color) */
+  text-shadow: 0 2px 8px rgba(0,0,0,0.2), 0 4px 16px rgba(0,0,0,0.1);
+}
+
+.action-button-icon {
+  user-select: none;
+  position: relative;
+  color: #fff;
+  top: 0;
+  font-size: 26px;
+  line-height: 1;
+}
+
+.face-title {
+  position: absolute;
+  top: 50%;
+  transform: translate(20%, -50%);
+}
+
+.face-title.active {
+  opacity: 1;
+  transform: translate(20%, -50%);
+  pointer-events: auto;
+  transition: 0.5s ease;
+}
+
+.face-title.inactive {
+  pointer-events: none;
+  opacity: 0;
+  transition: 0.1s ease;
+}
+
+.face-description {
+  user-select: none;
+  position: absolute;
+  max-width: 20ch; /* Slightly wider */
+  top: 50%;
+  font-size: 1.2rem;
+  right: 5%;
+  transform: translate(0, -50%);
+  color: inherit;
+  text-align: right;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.2), 0 4px 16px rgba(0,0,0,0.1);
+  font-weight: 500;
+}
+
+.face-description.active {
+  opacity: 1;
+  transform: translate(0, -50%);
+  pointer-events: auto;
+  transition: 0.5s ease;
+}
+
+.face-description.inactive {
+  pointer-events: none;
+  transform: translate(20%, -50%);
+  opacity: 0;
+  transition: 0.1s ease;
+}
+
+.action-button {
+  position: absolute;
+  left: 50%;
+  bottom: 20%; /* fallback */
+}
+
+.action-button.active {
+  bottom: 15%; /* positioned lower */
+  transform: translateX(-50%) scale(1);
+  opacity: 1;
+  pointer-events: auto;
+  transition: 0.5s ease;
+}
+
+.action-button.inactive {
+  bottom: -80px;
+  transform: translateX(-50%) scale(0);
+  opacity: 0;
+  pointer-events: none;
+  transition: 0.1s ease;
+}
+
+.tech-stack {
+  user-select: none;
+  position: absolute;
+  top: 50%;
+  left: 3.2em;
+  margin-top: 4rem;
+  transform: translate(20%, 0);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  max-width: 30ch;
+}
+
+.tech-tag {
+  display: inline-block;
+  padding: 0.4rem 0.8rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  border-radius: 0.5rem;
+  background: rgba(99, 102, 241, 0.15);
+  color: #6366f1;
+  border: 1.5px solid rgba(99, 102, 241, 0.3);
+  backdrop-filter: blur(8px);
+  text-shadow: none;
+  transition: all 0.3s ease;
+}
+
+.tech-tag:hover {
+  background: rgba(99, 102, 241, 0.25);
+  border-color: rgba(99, 102, 241, 0.5);
+  transform: translateY(-2px);
+}
+
+.tech-stack.active {
+  opacity: 1;
+  transform: translate(20%, 0);
+  pointer-events: auto;
+  transition: 0.5s ease 0.1s;
+}
+
+.tech-stack.inactive {
+  pointer-events: none;
+  opacity: 0;
+  transform: translate(20%, 10px);
+  transition: 0.1s ease;
+}
+
+@media (max-width: 1024px) {
+  .face-title,
+  .face-description,
+  .tech-stack {
+    /* Hide on tablets and phones as it overlaps the 3D element too much */
+    display: none;
+  }
+}
