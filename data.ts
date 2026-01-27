@@ -41,6 +41,41 @@ export const EXPERIENCE: ExperienceItem[] = [
 
 export const PROJECTS: ProjectItem[] = [
   {
+    title: "Syllabi.dev",
+    role: "Individual Developer",
+    period: "Jan 2026",
+    techStack: ["React", "Google Cloud Platform", "Gemini API", "Tailwind CSS"],
+    description: [
+      "Intelligent syllabus parser using Google Gemini AI to\n" +
+      "extract course data, assignments, and deadlines from PDFs, images, and text."
+    ],
+    image: "/syllabi.svg",
+    link: "https://syllabi.dev"
+  },
+  {
+    title: "SyncSpec",
+    role: "Individual Developer",
+    period: "Dec 2025",
+    techStack: ["React", "FastAPI", "Firebase", "Y.js", "WebSocket", "Node.js"],
+    description: [
+      "Collaborative API and JSON schema editor with zero-conflict simultaneous\n" +
+      "editing using Y.js CRDT and WebSocket synchronization."
+    ],
+    image: "/syncspec.png",
+    link: "https://syncspec.netlify.app/"
+  },
+  {
+    title: "EcoShip",
+    role: "Hackathon Team Lead",
+    period: "Jul 2025",
+    techStack: ["React Native", "FastAPI", "Gemini API"],
+    description: [
+      "Pioneered React Native application integrating Gemini API for intelligent logistics support, implementing a proprietary eco-efficiency scoring algorithm that dynamically weighs cost-effectiveness (70%) against environmental impact (30%) to drive sustainable business choices for UPS."
+    ],
+    image: "/ups.png",
+    link: "https://github.com/hxxtsxxh/EcoShip"
+  },
+  {
     title: "EcoShip",
     role: "Hackathon Team Lead",
     period: "Jul 2025",
