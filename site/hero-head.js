@@ -157,6 +157,7 @@ function init(THREE, host) {
     uTime: { value: 0 },
     uPixelRatio: { value: renderer.getPixelRatio() },
     uScan: { value: 0 },
+    uScale: { value: 1 },
   };
 
   const pointMaterial = new THREE.ShaderMaterial({
@@ -170,6 +171,7 @@ function init(THREE, host) {
       uniform float uTime;
       uniform float uPixelRatio;
       uniform float uScan;
+      uniform float uScale;
       varying float vLight;
       varying float vRim;
       varying float vScan;
@@ -187,7 +189,7 @@ function init(THREE, host) {
         vTwinkle = 0.8 + 0.2 * sin(uTime * 2.0 + aSeed * 40.0);
         vFade = aKind > 1.5 ? smoothstep(-1.35, -0.55, position.y) : 1.0;
         float size = aKind > 0.5 && aKind < 1.5 ? 2.4 : 1.8;
-        gl_PointSize = size * uPixelRatio * (6.2 / -mv.z) * (1.0 + vScan * 0.5);
+        gl_PointSize = size * uScale * uPixelRatio * (6.2 / -mv.z) * (1.0 + vScan * 0.5);
         gl_Position = projectionMatrix * mv;
       }
     `,
@@ -351,6 +353,8 @@ function init(THREE, host) {
     const h = host.clientHeight;
     if (!w || !h) return;
     renderer.setSize(w, h, false);
+    // Keep dot density consistent on large canvases (big monitors, TVs).
+    uniforms.uScale.value = Math.max(1, h / 650);
     camera.aspect = w / h;
     // Keep the head framed whether the box is tall or wide.
     camera.position.z = 6.2 * Math.max(1, 0.75 / camera.aspect);
